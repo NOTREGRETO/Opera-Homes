@@ -42,8 +42,8 @@
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     width: 90%;
-    max-width: 440px;
-    padding: 50px 40px;
+    max-width: 520px;
+    padding: 0;
     border-radius: 32px;
     position: relative;
     box-shadow: var(--opera-shadow);
@@ -80,28 +80,30 @@
     100% { background-position: 0% 50%; }
 }
 
-/* Close Button (Minimalist) */
+/* Close Button (overlays image) */
 .opera-close-trigger {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     font-size: 18px;
     color: var(--opera-deep-blue);
     cursor: pointer;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 20;
 }
 
 .opera-close-trigger:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.95);
     transform: rotate(90deg);
 }
 
@@ -117,8 +119,51 @@
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border: 1px solid rgba(79, 70, 229, 0.15);
+}
+
+/* Project Image Block */
+.opera-popup-image {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 32px 32px 0 0;
+}
+
+.opera-popup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.opera-asvattha-popup:hover .opera-popup-image img {
+    transform: scale(1.04);
+}
+
+.opera-img-label {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    background: rgba(20, 24, 62, 0.72);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    text-transform: uppercase;
+}
+
+/* Content wrapper padding when image is present */
+.opera-content-wrapper {
+    padding: 32px 36px 36px;
 }
 
 /* Content Typography */
@@ -206,8 +251,13 @@
 /* Responsive Scaling */
 @media (max-width: 480px) {
     .opera-asvattha-popup {
-        padding: 40px 25px;
         margin: 0 15px;
+    }
+    .opera-popup-image {
+        height: 170px;
+    }
+    .opera-content-wrapper {
+        padding: 24px 22px 28px;
     }
     .opera-asvattha-popup h2 {
         font-size: 28px;
